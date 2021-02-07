@@ -41,19 +41,23 @@ public class JDBCNextActivityDAO implements NextActivityDAO {
 
 	private NextActivity createNextActivityFromRow(SqlRowSet results) {
     NextActivity newNextActivity = new NextActivity();
+    
+    newNextActivity.setSheetId(readValueReturnLong(results, "Sheet_id"));
     newNextActivity.setLastActivityID(readValueReturnLong(results, "LastActivityID"));
     
     newNextActivity.setEquipment(results.getString("Equipment"));
-    newNextActivity.setSheet_Desc(results.getString("Sheet_Desc"));
+    newNextActivity.setSheetDesc(results.getString("Sheet_Desc"));
     newNextActivity.setLastActivityStatus(results.getString("LastActivityStatus"));
     newNextActivity.setLastActivityName(results.getString("LastActivityName"));
     newNextActivity.setNextActivityEstimateCD(results.getString("NextActivityEstimateCD"));
     newNextActivity.setActivityCDTracker(results.getString("ActivityCDTracker"));
 
-    newNextActivity.setUde_RunTimeTarget(readValueReturnInteger(results, "UDE_RunTimeTarget"));
-    newNextActivity.setTotalCT(readValueReturnInteger(results, "TotalCT"));
-    newNextActivity.setTotalDT(readValueReturnInteger(results, "TotalDT"));
-    newNextActivity.setTotalUT(readValueReturnInteger(results, "TotalUT"));
+    newNextActivity.setSheetType(readValueReturnInteger(results, "Sheet_type"));
+    newNextActivity.setUnitId(readValueReturnInteger(results, "Unit_id"));
+    newNextActivity.setDuration(readValueReturnInteger(results, "Duration"));
+    newNextActivity.setCalendarTime(readValueReturnInteger(results, "CalendarTime"));
+    newNextActivity.setDownTime(readValueReturnInteger(results, "DownTime"));
+    newNextActivity.setUpTime(readValueReturnInteger(results, "UpTime"));
     newNextActivity.setRemainingTime(readValueReturnInteger(results, "RemainingTime"));
     
     newNextActivity.setCurrentTimeStamp(readValueReturnTS(results, "CurrentTimeStamp"));

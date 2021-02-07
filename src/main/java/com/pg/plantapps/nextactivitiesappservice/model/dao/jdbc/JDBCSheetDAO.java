@@ -30,7 +30,7 @@ public class JDBCSheetDAO implements SheetDAO {
 	@Override
 	public List<Sheet> getSheets() {
 		List<Sheet> allSheets = new ArrayList<>();
-		String sql = "splocal_SA_NextActivity_GetSheets;";
+		String sql = "splocal_SA_NextActivities_GetSheets;";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 		while (results.next()) {
 			Sheet newSheet = createSheetFromRow(results);

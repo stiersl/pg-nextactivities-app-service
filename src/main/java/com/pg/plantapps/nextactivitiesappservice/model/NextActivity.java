@@ -5,17 +5,21 @@ import java.sql.Timestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class NextActivity {
-	private Long lastActivityID;
+	
 	private String equipment;
-	private String sheet_Desc;
-	private Integer ude_RunTimeTarget;
-	private Integer totalCT;
-	private Integer totalDT;
-	private Integer totalUT;
+	private Integer unitId;
+	private String sheetDesc;
+	private Long sheetId;
+	private Integer sheetType;
+	private Integer duration;
+	private Integer calendarTime;
+	private Integer downTime;
+	private Integer upTime;
 	private Integer remainingTime;
-	private String lastActivityName;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
 	private Timestamp currentTimeStamp;
+	private Long lastActivityID;
+	private String lastActivityName;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ssZ")
 	private Timestamp lastActivityStartTime;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ssZ")
@@ -26,6 +30,7 @@ public class NextActivity {
 	private String nextActivityEstimateCD;
 	private String activityCDTracker;
 	private Integer color;
+	
 	public Long getLastActivityID() {
 		return lastActivityID;
 	}
@@ -38,35 +43,47 @@ public class NextActivity {
 	public void setEquipment(String equipment) {
 		this.equipment = equipment;
 	}
-	public String getSheet_Desc() {
-		return sheet_Desc;
+	public Integer getUnitId() {
+		return unitId;
 	}
-	public void setSheet_Desc(String sheet_Desc) {
-		this.sheet_Desc = sheet_Desc;
+	public void setUnitId(Integer unitId) {
+		this.unitId = unitId;
 	}
-	public Integer getUde_RunTimeTarget() {
-		return ude_RunTimeTarget;
+	public String getSheetDesc() {
+		return sheetDesc;
 	}
-	public void setUde_RunTimeTarget(Integer ude_RunTimeTarget) {
-		this.ude_RunTimeTarget = ude_RunTimeTarget;
+	public void setSheetDesc(String sheetDesc) {
+		this.sheetDesc = sheetDesc;
 	}
-	public Integer getTotalCT() {
-		return totalCT;
+	public Long getSheetId() {
+		return sheetId;
 	}
-	public void setTotalCT(Integer totalCT) {
-		this.totalCT = totalCT;
+	public void setSheetId(Long sheetId) {
+		this.sheetId = sheetId;
 	}
-	public Integer getTotalDT() {
-		return totalDT;
+	public Integer getDuration() {
+		return duration;
 	}
-	public void setTotalDT(Integer totalDT) {
-		this.totalDT = totalDT;
+	public void setDuration(Integer duration) {
+		this.duration = duration;
 	}
-	public Integer getTotalUT() {
-		return totalUT;
+	public Integer getCalendarTime() {
+		return calendarTime;
 	}
-	public void setTotalUT(Integer totalUT) {
-		this.totalUT = totalUT;
+	public void setCalendarTime(Integer calendarTime) {
+		this.calendarTime = calendarTime;
+	}
+	public Integer getDownTime() {
+		return downTime;
+	}
+	public void setDownTime(Integer downTime) {
+		this.downTime = downTime;
+	}
+	public Integer getUpTime() {
+		return upTime;
+	}
+	public void setUpTime(Integer upTime) {
+		this.upTime = upTime;
 	}
 	public Integer getRemainingTime() {
 		return remainingTime;
@@ -128,5 +145,51 @@ public class NextActivity {
 	public void setColor(Integer color) {
 		this.color = color;
 	}
+	
+	public Integer getSheetType() {
+		return sheetType;
+	}
+	public void setSheetType(Integer sheetType) {
+		this.sheetType = sheetType;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((lastActivityID == null) ? 0 : lastActivityID.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NextActivity other = (NextActivity) obj;
+		if (lastActivityID == null) {
+			if (other.lastActivityID != null)
+				return false;
+		} else if (!lastActivityID.equals(other.lastActivityID))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "NextActivity [lastActivityID=" + lastActivityID + ", equipment=" + equipment + ", unitId=" + unitId
+				+ ", sheetDesc=" + sheetDesc + ", sheetId=" + sheetId + ", sheetType=" + sheetType + ", duration="
+				+ duration + ", calendarTime=" + calendarTime + ", downTime=" + downTime + ", upTime=" + upTime
+				+ ", remainingTime=" + remainingTime + ", lastActivityName=" + lastActivityName + ", currentTimeStamp="
+				+ currentTimeStamp + ", lastActivityStartTime=" + lastActivityStartTime + ", lastActivityEndTime="
+				+ lastActivityEndTime + ", lastActivityStatus=" + lastActivityStatus + ", nextActivityEstimate="
+				+ nextActivityEstimate + ", nextActivityEstimateCD=" + nextActivityEstimateCD + ", activityCDTracker="
+				+ activityCDTracker + ", color=" + color + "]";
+	}
+	
+	
+	
+	
 
 }

@@ -1,6 +1,6 @@
 # pg-nextactivities-app-service
 
-Backend For Frontend (BFF) service to support gathering data for P&Gs nextactivities-app UI app .   This service fetches data from the core-domain services as specified in dependencies section below.
+Backend For Frontend (BFF) service to support gathering data for pg-nextactivities-app UI app .   This service fetches data from the core-domain services as specified in dependencies section below.
 
 
 ##### Building and Running the Service
