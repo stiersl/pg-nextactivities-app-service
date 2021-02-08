@@ -1,7 +1,6 @@
 package com.pg.plantapps.nextactivitiesappservice.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,28 +9,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.pg.plantapps.nextactivitiesappservice.model.Sheet;
-import com.pg.plantapps.nextactivitiesappservice.model.dao.SheetDAO;
+import com.pg.plantapps.nextactivitiesappservice.model.WeatherForecast;
+import com.pg.plantapps.nextactivitiesappservice.model.dao.WeatherForecastDAO;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/sheets")
-public class SheetRestController {
+@RequestMapping("/weather")
+public class WeatherForecastController {
 
-	private SheetDAO sheetDAO;
+	private WeatherForecastDAO weatherForecastDAO;
 
 	@Autowired
-	public SheetRestController(SheetDAO sheetDAO) {
-		this.sheetDAO = sheetDAO;
+	public WeatherForecastController(WeatherForecastDAO weatherForecastDAO) {
+		this.weatherForecastDAO = weatherForecastDAO;
 	}
 
 	@GetMapping("/")
-	public List<Sheet> getActivityEstimates() {
-		List<Sheet> result = sheetDAO.getSheets();
+	public List<WeatherForecast> getWeatherForcasts() {
+		List<WeatherForecast> result = weatherForecastDAO.getWeatherForcast();
 		if (result == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		System.out.println("calling get sheets API:");
+		System.out.println("calling get Weather Forcast:");
 		return result;
 	}
 

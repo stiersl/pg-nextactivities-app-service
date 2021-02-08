@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.pg.plantapps.nextactivitiesappservice.model.Sheet;
-import com.pg.plantapps.nextactivitiesappservice.model.dao.SheetDAO;
+import com.pg.plantapps.nextactivitiesappservice.model.Unit;
+import com.pg.plantapps.nextactivitiesappservice.model.dao.UnitDAO;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/sheets")
-public class SheetRestController {
-
-	private SheetDAO sheetDAO;
-
+@RequestMapping("/units")
+public class UnitRestContoller {
+	
+	private UnitDAO unitDAO;
+	
 	@Autowired
-	public SheetRestController(SheetDAO sheetDAO) {
-		this.sheetDAO = sheetDAO;
+	public UnitRestContoller(UnitDAO unitDAO) {
+		this.unitDAO = unitDAO;
 	}
-
+	
 	@GetMapping("/")
-	public List<Sheet> getActivityEstimates() {
-		List<Sheet> result = sheetDAO.getSheets();
+	public List<Unit> getPreferredUnits() {
+		List<Unit> result = unitDAO.getPreferredUnits();
 		if (result == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		System.out.println("calling get sheets API:");
+		System.out.println("get Preferred Units API Call:");
 		return result;
 	}
-
 }
+
