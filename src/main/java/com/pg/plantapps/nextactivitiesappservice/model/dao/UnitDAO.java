@@ -6,7 +6,7 @@ import com.pg.plantapps.nextactivitiesappservice.model.Unit;
 
 public interface UnitDAO {
 	
-	public List<Unit> getPreferredUnits();
+	public List<Unit> getPreferredUnits(String token);
 	
 
 }

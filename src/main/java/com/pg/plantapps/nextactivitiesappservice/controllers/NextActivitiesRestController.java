@@ -2,6 +2,8 @@ package com.pg.plantapps.nextactivitiesappservice.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,6 +24,9 @@ public class NextActivitiesRestController {
 	private NextActivityDAO activityEstimateDAO;
 
 	@Autowired
+	private HttpServletRequest request;
+	
+	@Autowired
 	public NextActivitiesRestController(NextActivityDAO activityEstimateDAO) {
 		this.activityEstimateDAO = activityEstimateDAO;
 	}
@@ -33,6 +38,7 @@ public class NextActivitiesRestController {
 
 	@GetMapping("/{puids}")
 	public List<NextActivity> getNextActivities(@PathVariable String puids) {
+		System.out.println("token:" + request.getHeader("token"));
 		List<NextActivity> result = activityEstimateDAO.getNextActivities(puids);
 		if (result == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
