@@ -43,23 +43,23 @@ public class RestUnitDAO implements UnitDAO{
 		
 		// create Headers
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorizaton", "Bearer " + token);
+		headers.set("Authorization", "Bearer " + token);
 		
 		
 		HttpEntity<String> request = new HttpEntity<String>(headers);
 		//HttpEntity request = new HttpEntity(headers);
 		
 		
-		ResponseEntity<MyMachines> unitResponseEntity = restTemplate.exchange(BASE_URL, HttpMethod.GET, request, MyMachines.class);
+		ResponseEntity<MyMachine[]> unitResponseEntity = restTemplate.exchange(BASE_URL, HttpMethod.GET, request, MyMachine[].class);
 		
 		if(unitResponseEntity == null || unitResponseEntity.getBody() == null) {
 			return null;
 		}
 		
-		MyMachines myMachines = unitResponseEntity.getBody();
+		ResponseEntity<MyMachine[]> myMachines = unitResponseEntity;
 		
 		List<Unit> results = new ArrayList<>();
-		for (MyMachine mm : myMachines.data) {
+		for (MyMachine mm : myMachines.getBody()) {
 			Unit unit = new Unit();
 			unit.setUnitId(mm.assetId);	
 			unit.setEquipment(mm.name);
